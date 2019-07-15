@@ -70,11 +70,11 @@ func createVolume(volOptions *volumeOptions, adminCr *credentials, volID volumeI
 		return err
 	}
 
-	if bytesQuota > 0 {
-		if err := setVolumeAttribute(volRootCreating, "ceph.quota.max_bytes", fmt.Sprintf("%d", bytesQuota)); err != nil {
-			return err
-		}
-	}
+	// if bytesQuota > 0 {
+	// 	if err := setVolumeAttribute(volRootCreating, "ceph.quota.max_bytes", fmt.Sprintf("%d", bytesQuota)); err != nil {
+	// 		return err
+	// 	}
+	// }
 
 	if err := setVolumeAttribute(volRootCreating, "ceph.dir.layout.pool", volOptions.Pool); err != nil {
 		return fmt.Errorf("%v\ncephfs: Does pool '%s' exist?", err, volOptions.Pool)
